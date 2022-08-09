@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>
+  Clock 
+</title>
+<style>
+
+body{
+    font-family: cursive;
+    color: white;
+    background-image: url('star.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    text-align:center;
+    font-size:30px;
+    margin-top:20px;
+}
+#clock{
+  font-family:sans-serif;
+  height:100px;
+  text-align:center;
+  margin-left:40px;
+  font-size:85px;  
+  color:white;
+}
+
+</style>
+</head>
+<body>
+<h1>
+Clock
+</h1>
+<div id= "clock" onload="currentTime()">
+</div>
+</body>
+<script>
+
+function currentTime()
+{
+var date= new Date();
+var hh= date.getHours();
+var mins=date.getMinutes();
+var secs=date.getSeconds();
+let tZone="AM";
+
+if(hh === 0)
+{
+  hh=12;
+}
+
+if(hh > 12)
+{
+ hh = hh - 12;
+ tZone = "PM";
+}
+
+
+hh = (hh < 10) ? "0" + hh: hh;
+mins = (mins < 10) ? "0" + mins: mins;
+secs = (secs < 10) ? "0" + secs: secs;
+
+let time= hh+":"+mins+":"+secs+" "+tZone ;
+document.getElementById("clock").innerText= time;
+
+let t = setTimeout(function() { currentTime() },1000);
+}
+
+currentTime();
+</script>
+</html>
